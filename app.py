@@ -104,7 +104,7 @@ fig_usd.update_layout(
 
 # --- Streamlit Layout ---
 st.title("🏘️ Real Estate ROI Simulator for Volkan Ticaret")
-st.subheader("Visualize and Compare Rental Income vs Interest Earnings")
+st.subheader("Ev Almak vs Parayi Faize Koymak")
 
 st.plotly_chart(fig_tl, use_container_width=True)
 st.plotly_chart(fig_usd, use_container_width=True)
