@@ -15,14 +15,33 @@ rent_increase = st.sidebar.slider("Rent Increase Every 6 Months (%)", 0.0, 0.5, 
 months = 24
 month_labels = [f"M{i+1}" for i in range(months)]
 
-# --- Interest and FX Assumptions ---
-annual_rates = np.array([0.50]*6 + [0.40]*6 + [0.30]*6 + [0.25]*6)
-dollar_rates = np.array([
+# --- Editable Inputs for Interest and FX ---
+default_annual_rates = [0.50]*6 + [0.40]*6 + [0.30]*6 + [0.25]*6
+default_dollar_rates = [
     39.0, 39.2, 39.5, 39.8, 40.1, 40.4,
     40.6, 41.0, 41.3, 41.6, 42.0, 42.4,
     42.8, 43.1, 43.5, 43.8, 44.1, 44.4,
     44.7, 45.0, 45.2, 45.5, 45.7, 46.0
-])
+]
+
+editable_df = pd.DataFrame({
+    "Month": month_labels,
+    "Annual Interest Rate (%)": [r * 100 for r in default_annual_rates],
+    "Dollar Rate (TL/USD)": default_dollar_rates
+})
+
+st.sidebar.markdown("📊 **Adjust Interest and FX Expectations**")
+edited_df = st.sidebar.data_editor(
+    editable_df,
+    use_container_width=True,
+    hide_index=True,
+    num_rows="fixed"
+)
+
+# Convert edited data to arrays
+annual_rates = np.array(edited_df["Annual Interest Rate (%)"]) / 100
+dollar_rates = np.array(edited_df["Dollar Rate (TL/USD)"])
+
 
 # --- Rent Schedule ---
 rents = []
