@@ -81,23 +81,7 @@ fig_tl.update_layout(
     margin=dict(t=30, b=30, l=10, r=10),
     font=dict(size=12),
     mode="lines+markers",
-    marker=dict(size=6),
-    #annotations=[
-    #    dict(
-    #        text=(
-    #            f"<b>Investment:</b> {initial_investment:,.0f} TL<br>"
-    #            f"<b>Avg Annual Interest:</b> {avg_interest_annual:.1f}%<br>"
-    #            f"<b>Avg Rent:</b> {avg_monthly_rent:,.0f} TL<br>"
-    #            f"<b>Rent Increase:</b> {int(rent_increase * 100)}%<br>"
-    #            f"<b>Avg Dollar Rate:</b> {avg_dollar_rate:.2f}"
-    #        ),
-    #        showarrow=False,
-    #        xref="paper", yref="paper",
-    #        x=0.95, y=0.95,
-    #        bordercolor="gray", borderwidth=1,
-    #        bgcolor="lightyellow", opacity=0.8
-    #    )
-    #]
+    marker=dict(size=6)
 )
 
 
@@ -117,22 +101,7 @@ fig_usd.update_layout(
     margin=dict(t=30, b=30, l=10, r=10),
     font=dict(size=12),
     mode="lines+markers",
-    marker=dict(size=6),
-
-    #annotations=[
-    #    dict(
-    #        text=(
-    #            f"<b>Investment:</b> {initial_investment:,.0f} TL<br>"
-    #            f"<b>Avg Dollar Rate:</b> {avg_dollar_rate:.2f}<br>"
-    #            f"<b>Rent Increase:</b> {int(rent_increase * 100)}%"
-    #        ),
-    #        showarrow=False,
-    #        xref="paper", yref="paper",
-    #        x=0.95, y=0.95,
-    #        bordercolor="gray", borderwidth=1,
-    #        bgcolor="lavenderblush", opacity=0.8
-    #    )
-    #]
+    marker=dict(size=6)
 )
 
 # --- Streamlit Layout ---
