@@ -1,6 +1,7 @@
 import numpy as np
 import plotly.graph_objects as go
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(page_title="Real Estate ROI Dashboard", layout="wide")
 
@@ -109,9 +110,7 @@ st.plotly_chart(fig_tl, use_container_width=True)
 st.plotly_chart(fig_usd, use_container_width=True)
 
 st.markdown("---")
-import pandas as pd
-
-# --- DataFrames for Display ---
+# Data table
 rates_df = pd.DataFrame({
     "Month": month_labels,
     "Annual Interest Rate": [f"{rate*100:.2f}%" for rate in annual_rates],
@@ -120,8 +119,38 @@ rates_df = pd.DataFrame({
 
 st.markdown("---")
 st.subheader("📉 Scenario Inputs by Month")
-
-
 st.dataframe(rates_df.style.format(precision=2), use_container_width=True)
 
+# Interest Rate Trend
+fig_rate = go.Figure()
+fig_rate.add_trace(go.Scatter(
+    x=month_labels,
+    y=annual_rates * 100,
+    mode="lines+markers",
+    line=dict(color="orange"),
+    name="Annual Interest Rate (%)"
+))
+fig_rate.update_layout(
+    title="Annual Interest Rate by Month",
+    xaxis_title="Month",
+    yaxis_title="Interest Rate (%)",
+    height=350
+)
+st.plotly_chart(fig_rate, use_container_width=True)
 
+# Dollar Rate Trend
+fig_fx = go.Figure()
+fig_fx.add_trace(go.Scatter(
+    x=month_labels,
+    y=dollar_rates,
+    mode="lines+markers",
+    line=dict(color="green"),
+    name="Dollar Rate (TL/USD)"
+))
+fig_fx.update_layout(
+    title="Expected Dollar Exchange Rate by Month",
+    xaxis_title="Month",
+    yaxis_title="TL per USD",
+    height=350
+)
+st.plotly_chart(fig_fx, use_container_width=True)
