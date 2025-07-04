@@ -133,7 +133,6 @@ fig_rate = go.Figure()
 fig_rate.add_trace(go.Scatter(
     x=month_labels,
     y=annual_rates * 100,
-    mode="lines+markers",
     line=dict(color="orange"),
     name="Annual Interest Rate (%)",
     mode="lines+markers",
@@ -152,7 +151,6 @@ fig_fx = go.Figure()
 fig_fx.add_trace(go.Scatter(
     x=month_labels,
     y=dollar_rates,
-    mode="lines+markers",
     line=dict(color="green"),
     name="Dollar Rate (TL/USD)",
     mode="lines+markers",
