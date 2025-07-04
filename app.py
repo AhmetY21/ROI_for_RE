@@ -103,7 +103,7 @@ fig_usd.update_layout(
 )
 
 # --- Streamlit Layout ---
-st.title("🏘️ Real Estate ROI Simulator")
+st.title("🏘️ Real Estate ROI Simulator for Selviyıldız1538")
 st.subheader("Visualize and Compare Rental Income vs Interest Earnings")
 
 st.plotly_chart(fig_tl, use_container_width=True)
