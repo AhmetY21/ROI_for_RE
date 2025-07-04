@@ -105,11 +105,8 @@ fig_usd.update_layout(
 st.title("🏘️ Real Estate ROI Simulator")
 st.subheader("Visualize and Compare Rental Income vs Interest Earnings")
 
-col1, col2 = st.columns(2)
-with col1:
-    st.plotly_chart(fig_tl, use_container_width=True)
-with col2:
-    st.plotly_chart(fig_usd, use_container_width=True)
+st.plotly_chart(fig_tl, use_container_width=True)
+st.plotly_chart(fig_usd, use_container_width=True)
 
 st.markdown("---")
 st.markdown("📈 Use the sliders in the sidebar to explore different investment scenarios.")
