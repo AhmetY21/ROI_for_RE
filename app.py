@@ -65,6 +65,15 @@ avg_interest_annual = np.mean(annual_rates) * 100
 avg_dollar_rate = np.mean(dollar_rates)
 avg_monthly_rent = np.mean(rents)
 
+st.markdown(f"""
+**💰 Summary:**
+- Initial Investment: `{initial_investment:,.0f}` TL  
+- Avg. Interest Rate: `{avg_interest_annual:.2f}%`  
+- Avg. Monthly Rent: `{avg_monthly_rent:,.0f}` TL  
+- Avg. Dollar Rate: `{avg_dollar_rate:.2f}` TL/USD  
+- Rent Increase Every 6 Months: `{int(rent_increase*100)}%`
+""")
+
 # --- Plot 1: TL View ---
 fig_tl = go.Figure()
 fig_tl.add_trace(go.Bar(x=month_labels, y=rents, name="Rent Income (TL)", marker_color="royalblue"))
@@ -76,28 +85,38 @@ fig_tl.update_layout(
     yaxis_title="Income (TL)",
     barmode='group',
     height=450,
-    annotations=[
-        dict(
-            text=(
-                f"<b>Investment:</b> {initial_investment:,.0f} TL<br>"
-                f"<b>Avg Annual Interest:</b> {avg_interest_annual:.1f}%<br>"
-                f"<b>Avg Rent:</b> {avg_monthly_rent:,.0f} TL<br>"
-                f"<b>Rent Increase:</b> {int(rent_increase * 100)}%<br>"
-                f"<b>Avg Dollar Rate:</b> {avg_dollar_rate:.2f}"
-            ),
-            showarrow=False,
-            xref="paper", yref="paper",
-            x=0.95, y=0.95,
-            bordercolor="gray", borderwidth=1,
-            bgcolor="lightyellow", opacity=0.8
-        )
-    ]
+    #annotations=[
+    #    dict(
+    #        text=(
+    #            f"<b>Investment:</b> {initial_investment:,.0f} TL<br>"
+    #            f"<b>Avg Annual Interest:</b> {avg_interest_annual:.1f}%<br>"
+    #            f"<b>Avg Rent:</b> {avg_monthly_rent:,.0f} TL<br>"
+    #            f"<b>Rent Increase:</b> {int(rent_increase * 100)}%<br>"
+    #            f"<b>Avg Dollar Rate:</b> {avg_dollar_rate:.2f}"
+    #        ),
+    #        showarrow=False,
+    #        xref="paper", yref="paper",
+    #        x=0.95, y=0.95,
+    #        bordercolor="gray", borderwidth=1,
+    #        bgcolor="lightyellow", opacity=0.8
+    #    )
+    #]
 )
+
 
 # --- Plot 2: USD View ---
 fig_usd = go.Figure()
 fig_usd.add_trace(go.Bar(x=month_labels, y=rents_usd, name="Rent Income (USD)", marker_color="seagreen"))
 fig_usd.add_trace(go.Bar(x=month_labels, y=interest_usd, name="Interest Income (USD)", marker_color="tomato"))
+
+st.markdown(f"""
+**💰 Summary:**
+- Initial Investment: `{initial_investment:,.0f}` TL  
+- Avg. Interest Rate: `{avg_interest_annual:.2f}%`  
+- Avg. Monthly Rent: `{avg_monthly_rent:,.0f}` TL  
+- Avg. Dollar Rate: `{avg_dollar_rate:.2f}` TL/USD  
+- Rent Increase Every 6 Months: `{int(rent_increase*100)}%`
+""")
 
 fig_usd.update_layout(
     title="Monthly Rent vs Interest Income (in USD)",
@@ -105,20 +124,20 @@ fig_usd.update_layout(
     yaxis_title="Income (USD)",
     barmode='group',
     height=450,
-    annotations=[
-        dict(
-            text=(
-                f"<b>Investment:</b> {initial_investment:,.0f} TL<br>"
-                f"<b>Avg Dollar Rate:</b> {avg_dollar_rate:.2f}<br>"
-                f"<b>Rent Increase:</b> {int(rent_increase * 100)}%"
-            ),
-            showarrow=False,
-            xref="paper", yref="paper",
-            x=0.95, y=0.95,
-            bordercolor="gray", borderwidth=1,
-            bgcolor="lavenderblush", opacity=0.8
-        )
-    ]
+    #annotations=[
+    #    dict(
+    #        text=(
+    #            f"<b>Investment:</b> {initial_investment:,.0f} TL<br>"
+    #            f"<b>Avg Dollar Rate:</b> {avg_dollar_rate:.2f}<br>"
+    #            f"<b>Rent Increase:</b> {int(rent_increase * 100)}%"
+    #        ),
+    #        showarrow=False,
+    #        xref="paper", yref="paper",
+    #        x=0.95, y=0.95,
+    #        bordercolor="gray", borderwidth=1,
+    #        bgcolor="lavenderblush", opacity=0.8
+    #    )
+    #]
 )
 
 # --- Streamlit Layout ---
