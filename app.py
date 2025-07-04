@@ -65,14 +65,7 @@ avg_interest_annual = np.mean(annual_rates) * 100
 avg_dollar_rate = np.mean(dollar_rates)
 avg_monthly_rent = np.mean(rents)
 
-st.markdown(f"""
-**💰 Summary:**
-- Initial Investment: `{initial_investment:,.0f}` TL  
-- Avg. Interest Rate: `{avg_interest_annual:.2f}%`  
-- Avg. Monthly Rent: `{avg_monthly_rent:,.0f}` TL  
-- Avg. Dollar Rate: `{avg_dollar_rate:.2f}` TL/USD  
-- Rent Increase Every 6 Months: `{int(rent_increase*100)}%`
-""")
+
 
 # --- Plot 1: TL View ---
 fig_tl = go.Figure()
@@ -85,6 +78,10 @@ fig_tl.update_layout(
     yaxis_title="Income (TL)",
     barmode='group',
     height=450,
+    margin=dict(t=30, b=30, l=10, r=10),
+    font=dict(size=12),
+    mode="lines+markers",
+    marker=dict(size=6),
     #annotations=[
     #    dict(
     #        text=(
@@ -109,14 +106,7 @@ fig_usd = go.Figure()
 fig_usd.add_trace(go.Bar(x=month_labels, y=rents_usd, name="Rent Income (USD)", marker_color="seagreen"))
 fig_usd.add_trace(go.Bar(x=month_labels, y=interest_usd, name="Interest Income (USD)", marker_color="tomato"))
 
-st.markdown(f"""
-**💰 Summary:**
-- Initial Investment: `{initial_investment:,.0f}` TL  
-- Avg. Interest Rate: `{avg_interest_annual:.2f}%`  
-- Avg. Monthly Rent: `{avg_monthly_rent:,.0f}` TL  
-- Avg. Dollar Rate: `{avg_dollar_rate:.2f}` TL/USD  
-- Rent Increase Every 6 Months: `{int(rent_increase*100)}%`
-""")
+
 
 fig_usd.update_layout(
     title="Monthly Rent vs Interest Income (in USD)",
@@ -124,6 +114,11 @@ fig_usd.update_layout(
     yaxis_title="Income (USD)",
     barmode='group',
     height=450,
+    margin=dict(t=30, b=30, l=10, r=10),
+    font=dict(size=12),
+    mode="lines+markers",
+    marker=dict(size=6),
+
     #annotations=[
     #    dict(
     #        text=(
@@ -143,6 +138,15 @@ fig_usd.update_layout(
 # --- Streamlit Layout ---
 st.title("🏘️ ROI Simulator")
 st.subheader("Ev Almak vs Parayi Faize Koymak")
+
+st.markdown(f"""
+**💰 Summary:**
+- Initial Investment: `{initial_investment:,.0f}` TL  
+- Avg. Interest Rate: `{avg_interest_annual:.2f}%`  
+- Avg. Monthly Rent: `{avg_monthly_rent:,.0f}` TL  
+- Avg. Dollar Rate: `{avg_dollar_rate:.2f}` TL/USD  
+- Rent Increase Every 6 Months: `{int(rent_increase*100)}%`
+""")
 
 st.plotly_chart(fig_tl, use_container_width=True)
 st.plotly_chart(fig_usd, use_container_width=True)
