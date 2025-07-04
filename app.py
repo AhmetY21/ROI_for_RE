@@ -109,5 +109,19 @@ st.plotly_chart(fig_tl, use_container_width=True)
 st.plotly_chart(fig_usd, use_container_width=True)
 
 st.markdown("---")
-st.markdown("📈 Use the sliders in the sidebar to explore different investment scenarios.")
+import pandas as pd
+
+# --- DataFrames for Display ---
+rates_df = pd.DataFrame({
+    "Month": month_labels,
+    "Annual Interest Rate": [f"{rate*100:.2f}%" for rate in annual_rates],
+    "Dollar Rate (TL/USD)": dollar_rates
+})
+
+st.markdown("---")
+st.subheader("📉 Scenario Inputs by Month")
+
+
+st.dataframe(rates_df.style.format(precision=2), use_container_width=True)
+
 
