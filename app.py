@@ -79,9 +79,7 @@ fig_tl.update_layout(
     barmode='group',
     height=450,
     margin=dict(t=30, b=30, l=10, r=10),
-    font=dict(size=12),
-    mode="lines+markers",
-    marker=dict(size=6)
+    font=dict(size=12)
 )
 
 
@@ -99,9 +97,7 @@ fig_usd.update_layout(
     barmode='group',
     height=450,
     margin=dict(t=30, b=30, l=10, r=10),
-    font=dict(size=12),
-    mode="lines+markers",
-    marker=dict(size=6)
+    font=dict(size=12)
 )
 
 # --- Streamlit Layout ---
@@ -139,7 +135,9 @@ fig_rate.add_trace(go.Scatter(
     y=annual_rates * 100,
     mode="lines+markers",
     line=dict(color="orange"),
-    name="Annual Interest Rate (%)"
+    name="Annual Interest Rate (%)",
+    mode="lines+markers",
+    marker=dict(size=6)
 ))
 fig_rate.update_layout(
     title="Annual Interest Rate by Month",
@@ -156,7 +154,9 @@ fig_fx.add_trace(go.Scatter(
     y=dollar_rates,
     mode="lines+markers",
     line=dict(color="green"),
-    name="Dollar Rate (TL/USD)"
+    name="Dollar Rate (TL/USD)",
+    mode="lines+markers",
+    marker=dict(size=6)
 ))
 fig_fx.update_layout(
     title="Expected Dollar Exchange Rate by Month",
